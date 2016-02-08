@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#sv start zabbix || exit 1
+
+source /etc/envvars
+env
+
+if [ -n "$ZABBIX_SERVER" ]; then
+  sed -i -e "s|Server=.*|Server=$ZABBIX_SERVER|" -e "s|ServerActive=.*|ServerActive=$ZABBIX_SERVER|" /usr/local/etc/zabbix_agentd.conf
+fi
+
+exec 2>&1
+chpst -u zabbix zabbix_agentd -f
