@@ -20,8 +20,11 @@ RUN apt-get install -y vim less net-tools inetutils-ping wget curl git telnet nm
 #Your Instructions Here
 RUN apt-get install -y build-essential
 
+#Sensors
+RUN apt-get install -y lm-sensors
+
 #Zabbix
-RUN wget -O - http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Release%20Candidates/3.0.0rc1/zabbix-3.0.0rc1.tar.gz | tar zx
+RUN wget -O - http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Release%20Candidates/3.0.0rc2/zabbix-3.0.0rc2.tar.gz | tar zx
 RUN mv /zabbix* /zabbix
 
 RUN cd /zabbix && \
@@ -32,8 +35,7 @@ RUN cd /zabbix && \
 RUN groupadd zabbix && \
     useradd -g zabbix zabbix
 
-#Sensors
-RUN apt-get install -y lm-sensors
+COPY zabbix_agentd.conf /usr/local/etc/
 
 #Add runit services
 COPY sv /etc/service 
