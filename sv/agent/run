@@ -10,7 +10,7 @@ sed -i -e "s|# ListenIP=.*|ListenIP=$MY_IP|" /usr/local/etc/zabbix_agentd.conf
 
 if [ -n "$ZABBIX_SERVER" ]; then
   #ZABBIX_IP=`dig +short $ZABBIX_SERVER`
-  sed -i -e "s|Server=.*|Server=$ZABBIX_SERVER|" -e "s|ServerActive=.*|ServerActive=$ZABBIX_SERVER|" /usr/local/etc/zabbix_agentd.conf
+  sed -i -e "s|Server=.*|Server=$ZABBIX_SERVER,127.0.0.1|" -e "s|ServerActive=.*|ServerActive=$ZABBIX_SERVER|" /usr/local/etc/zabbix_agentd.conf
 fi
 
 if [ -n "$HOSTMETADATA" ]; then
