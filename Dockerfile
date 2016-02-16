@@ -8,14 +8,12 @@ ENV TERM xterm
 RUN echo "export PS1='\e[1;31m\]\u@\h:\w\\$\[\e[0m\] '" >> /root/.bashrc
 
 #Runit
-RUN apt-get install -y runit && apt-get clean
+RUN apt-get install -y runit
 CMD export > /etc/envvars && /usr/sbin/runsvdir-start
 RUN echo 'export > /etc/envvars' >> /root/.bashrc
 
 #Utilities
-RUN apt-get install -y vim less net-tools inetutils-ping wget curl git telnet nmap socat dnsutils netcat tree htop unzip sudo software-properties-common jq psmisc && \
-    apt-get clean
-
+RUN apt-get install -y vim less net-tools inetutils-ping wget curl git telnet nmap socat dnsutils netcat tree htop unzip sudo software-properties-common jq psmisc
 
 #Your Instructions Here
 RUN apt-get install -y build-essential
