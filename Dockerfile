@@ -22,7 +22,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y lm-sensors
 
 #Zabbix
-RUN wget -O - http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/3.0.0/zabbix-3.0.0.tar.gz | tar zx
+RUN wget -O - http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/3.0.2/zabbix-3.0.2.tar.gz | tar zx
 RUN mv /zabbix* /zabbix
 
 RUN cd /zabbix && \
